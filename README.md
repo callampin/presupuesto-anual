@@ -240,7 +240,7 @@ En GitHub Actions, el workflow **Release** genera los instaladores para ambas pl
 
 > El campo `homepage` de `package.json` apunta a `https://github.com/callampin/presupuesto-anual` y se usa en el paquete `.deb`.
 >
-> En Fedora, generar el `.deb` localmente requiere `libcrypt.so.1` (paquete `libxcrypt-compat`). En Linux no se puede generar el instalador NSIS sin wine: usa el workflow de CI para Windows.
+> En Fedora, `pnpm package:linux` requiere `rpm-build` (para el `.rpm`) y `libcrypt-compat` (para el `.deb`). `pnpm package:win` requiere Wine para generar NSIS/portable en Linux; en CI se usa un runner de Windows.
 
 ---
 
