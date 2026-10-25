@@ -4,6 +4,8 @@ Aplicación de escritorio **local-first** para gestionar finanzas personales, cr
 
 Está construida con **Electron + React + TypeScript + Hono + SQLite**. En la versión empaquetada la interfaz y la API se comunican mediante un protocolo interno (`app://`), sin abrir puertos TCP.
 
+[Repositorio](https://github.com/callampin/presupuesto-anual) · [Releases](https://github.com/callampin/presupuesto-anual/releases)
+
 ---
 
 ## Características
@@ -65,6 +67,14 @@ Después puedes abrirla desde el menú de aplicaciones o ejecutando `presupuesto
 ### Primer arranque
 
 No hay que instalar Node, pnpm ni dependencias: el instalador ya incluye todo lo necesario.
+
+Cada release incluye `SHA256SUMS.txt` para verificar la descarga. En Linux:
+
+```bash
+sha256sum -c SHA256SUMS.txt
+```
+
+En Windows puedes comparar el hash con `Get-FileHash` en PowerShell.
 
 En el primer arranque la aplicación:
 
