@@ -16,6 +16,7 @@ Está construida con **Electron + React + TypeScript + Hono + SQLite**. En la ve
 - **Catálogo maestro** de conceptos recurrentes y soporte para varios años fiscales.
 - **Seguimiento de deudas**: monto total, abonos, saldo pendiente y estado “Saldada”.
 - **Escala de interfaz** ajustable entre **80% y 150%** desde la cabecera, con preferencia recordada en el equipo.
+- **Logo e icono propios** en la cabecera, el menú del sistema, la ventana y el favicon.
 - **Moneda y formato configurables**, interfaz 100% en español y modo oscuro.
 - **Respaldos locales** en JSON y copia directa de la base SQLite.
 
