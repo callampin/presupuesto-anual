@@ -26,7 +26,7 @@ Está construida con **Electron + React + TypeScript + Hono + SQLite**. En la ve
 ### Windows
 
 1. Descarga desde la sección **[Releases](https://github.com/callampin/presupuesto-anual/releases)**:
-   - **Instalador:** `Presupuesto Personal Setup <versión>.exe`
+   - **Instalador:** `Presupuesto-Personal-<versión>-setup.exe`
    - **Portable:** `Presupuesto-Personal-<versión>-portable.exe`
 2. Ejecuta el archivo.
 3. Si Windows SmartScreen muestra un aviso (la aplicación no está firmada digitalmente), pulsa **Más información → Ejecutar de todas formas**.
@@ -39,14 +39,14 @@ El **portable** no instala nada, pero guarda los datos en `%APPDATA%` para que p
 #### AppImage (recomendado)
 
 ```bash
-chmod +x "Presupuesto Personal-<versión>.AppImage"
-./"Presupuesto Personal-<versión>.AppImage"
+chmod +x "Presupuesto-Personal-<versión>.AppImage"
+./"Presupuesto-Personal-<versión>.AppImage"
 ```
 
 Si tu distribución no tiene FUSE:
 
 ```bash
-./"Presupuesto Personal-<versión>.AppImage" --appimage-extract-and-run
+./"Presupuesto-Personal-<versión>.AppImage" --appimage-extract-and-run
 ```
 
 o instala el paquete `fuse` / `libfuse2` de tu distribución.
@@ -54,7 +54,7 @@ o instala el paquete `fuse` / `libfuse2` de tu distribución.
 #### Debian / Ubuntu (.deb)
 
 ```bash
-sudo apt install ./presupuesto-personal_<versión>_amd64.deb
+sudo apt install ./Presupuesto-Personal-<versión>.deb
 ```
 
 Después puedes abrirla desde el menú de aplicaciones o ejecutando `presupuesto-personal`.
@@ -145,7 +145,7 @@ El selector superior permite crear años nuevos y eliminar el año activo. La el
 Instala FUSE o ejecútala con:
 
 ```bash
-./"Presupuesto Personal-<versión>.AppImage" --appimage-extract-and-run
+./"Presupuesto-Personal-<versión>.AppImage" --appimage-extract-and-run
 ```
 
 ### Windows muestra “Windows protegió tu PC”

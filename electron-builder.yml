@@ -6,6 +6,8 @@ directories:
   output: release
   buildResources: build
 
+artifactName: Presupuesto-Personal-${version}.${ext}
+
 files:
   - dist/**/*
   - dist-electron/**/*
@@ -50,6 +52,7 @@ win:
   icon: build/icon.ico
 
 nsis:
+  artifactName: Presupuesto-Personal-${version}-setup.${ext}
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
