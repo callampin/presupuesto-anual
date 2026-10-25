@@ -5,7 +5,10 @@ import '@fontsource-variable/familjen-grotesk'
 import '@fontsource/dm-mono/400.css'
 import '@fontsource/dm-mono/500.css'
 import App from './App'
+import { APP_VERSION_LABEL } from './lib/version'
 import './index.css'
+
+document.title = `Presupuesto Personal · ${APP_VERSION_LABEL}`
 
 const queryClient = new QueryClient({
   defaultOptions: {

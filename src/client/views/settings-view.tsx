@@ -1,6 +1,7 @@
 import { Database, Settings } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { QueryError } from '@/components/feedback/query-error'
+import { AboutPanel } from '@/components/settings/about-panel'
 import { BackupPanel } from '@/components/settings/backup-panel'
 import { CatalogManager } from '@/components/settings/catalog-manager'
 import { CurrencySettings } from '@/components/settings/currency-settings'
@@ -48,6 +49,7 @@ export function SettingsView() {
           </div>
 
           <DangerZone />
+          <AboutPanel />
         </>
       ) : null}
     </div>

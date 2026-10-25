@@ -1,7 +1,7 @@
 {
   "name": "presupuesto-personal",
   "productName": "Presupuesto Personal",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Sistema personal de finanzas y presupuesto local (reemplazo de PRESUPUESTO.xlsx)",
   "homepage": "https://github.com/callampin/presupuesto-anual",

@@ -5,6 +5,7 @@ import { UiScaleSelector } from '@/components/layout/ui-scale-selector'
 import { YearSelector } from '@/components/layout/year-selector'
 import { useHealth } from '@/lib/queries'
 import { cn } from '@/lib/utils'
+import { APP_VERSION_LABEL } from '@/lib/version'
 
 export interface AppHeaderProps {
   year: number
@@ -36,9 +37,17 @@ export function AppHeader({
         <div className="flex min-w-0 items-center gap-3">
           <BrandLogo />
           <div className="min-w-0">
-            <h1 className="font-display text-[13px] font-semibold uppercase leading-tight tracking-[0.18em] text-foreground">
-              Presupuesto <span className="text-primary">Personal</span>
-            </h1>
+            <div className="flex items-center gap-2">
+              <h1 className="font-display text-[13px] font-semibold uppercase leading-tight tracking-[0.18em] text-foreground">
+                Presupuesto <span className="text-primary">Personal</span>
+              </h1>
+              <span
+                className="shrink-0 border border-border/70 px-1.5 py-0.5 font-mono text-[9px] leading-none tracking-[0.06em] text-muted-foreground"
+                title={`Versión ${APP_VERSION_LABEL}`}
+              >
+                {APP_VERSION_LABEL}
+              </span>
+            </div>
             <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.24em] text-muted-foreground">
               Registro local · SQLite
             </p>

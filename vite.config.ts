@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import packageJson from './package.json'
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url))
 // `pnpm dev` (scripts/dev.mjs) inyecta estos valores para que el proxy apunte
@@ -11,6 +12,9 @@ const clientPort = Number(process.env.FINANZAS_CLIENT_PORT ?? 5173)
 
 export default defineConfig({
   root: path.join(rootDir, 'src/client'),
+  define: {
+    __APP_VERSION__: JSON.stringify(packageJson.version),
+  },
   plugins: [react()],
   resolve: {
     alias: {

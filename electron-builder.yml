@@ -34,6 +34,7 @@ linux:
   target:
     - AppImage
     - deb
+    - rpm
   category: Office
   icon: build/icon.png
   executableName: presupuesto-personal

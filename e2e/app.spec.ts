@@ -17,7 +17,7 @@ test('abre la app empaquetada, carga la API y usa userData', async () => {
 
   try {
     const page = await app.firstWindow()
-    await expect(page).toHaveTitle('Presupuesto Personal')
+    await expect(page).toHaveTitle(/Presupuesto Personal · v\d+\.\d+/)
     await expect(page.getByText('Plantilla Anual')).toBeVisible()
 
     const health = await page.evaluate(async () => {
@@ -68,6 +68,28 @@ test('abre la app empaquetada, carga la API y usa userData', async () => {
     expect(
       await page.evaluate(() => document.documentElement.style.zoom),
     ).toBe('1.2')
+
+    const versionBadge = page.locator('header span[title^="Versión"]')
+    await expect(versionBadge).toBeVisible()
+    await expect(versionBadge).toHaveText(/^v\d+\.\d+$/)
+
+    await page.getByRole('button', { name: 'Catálogo y ajustes' }).click()
+    await expect(page.getByRole('heading', { name: 'Catálogo y ajustes' })).toBeVisible()
+    await expect(page.getByText('Acerca de')).toBeVisible()
+    await expect(page.getByRole('link', { name: /Perfil de GitHub/ })).toHaveAttribute(
+      'href',
+      'https://github.com/callampin',
+    )
+    await expect(page.getByRole('link', { name: /Repositorio/ })).toHaveAttribute(
+      'href',
+      'https://github.com/callampin/presupuesto-anual',
+    )
+    await expect(
+      page.getByRole('link', { name: /Buscar la última versión/ }),
+    ).toHaveAttribute(
+      'href',
+      'https://github.com/callampin/presupuesto-anual/releases/latest',
+    )
   } finally {
     await app.close()
     fs.rmSync(userDataDir, { recursive: true, force: true })

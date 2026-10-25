@@ -19,6 +19,7 @@ Está construida con **Electron + React + TypeScript + Hono + SQLite**. En la ve
 - **Seguimiento de deudas**: monto total, abonos, saldo pendiente y estado “Saldada”.
 - **Escala de interfaz** ajustable entre **80% y 150%** desde la cabecera, con preferencia recordada en el equipo.
 - **Logo e icono propios** en la cabecera, el menú del sistema, la ventana y el favicon.
+- **Versión visible** en la cabecera, el título de la ventana y la sección “Acerca de” de Ajustes.
 - **Moneda y formato configurables**, interfaz 100% en español y modo oscuro.
 - **Respaldos locales** en JSON y copia directa de la base SQLite.
 
@@ -62,7 +63,13 @@ sudo apt install ./Presupuesto-Personal-<versión>.deb
 
 Después puedes abrirla desde el menú de aplicaciones o ejecutando `presupuesto-personal`.
 
-> En Fedora y otras distribuciones que no usan `.deb`, utiliza el AppImage.
+#### Fedora / RHEL (.rpm)
+
+```bash
+sudo dnf install ./Presupuesto-Personal-<versión>.rpm
+```
+
+> En Fedora y otras distribuciones que no usan `.deb` también puedes usar el AppImage.
 
 ### Primer arranque
 
@@ -133,6 +140,7 @@ Introduce capital inicial, **tasa anual efectiva (%)**, **plazo en años** (admi
 - Moneda, símbolo, locale, decimales y año por defecto.
 - Alta, edición, orden, activación y eliminación de conceptos recurrentes.
 - Respaldos: exportar JSON, restaurar JSON y descargar la base `.db` con un diálogo nativo de guardado.
+- **Acerca de**: versión instalada, perfil de GitHub del autor, repositorio y enlace a la última release.
 - Zona de peligro para borrar todos los datos con doble confirmación.
 
 ### Años fiscales
@@ -196,7 +204,7 @@ pnpm install
 | `pnpm typecheck` | Verificación de tipos |
 | `pnpm build` | Compila frontend, proceso principal y preload |
 | `pnpm package:dir` | Genera una app sin instalador para probar |
-| `pnpm package:linux` | Genera AppImage y `.deb` (Linux) |
+| `pnpm package:linux` | Genera AppImage, `.deb` y `.rpm` (Linux) |
 | `pnpm package:win` | Genera NSIS y portable (Windows o CI) |
 
 El modo desarrollo usa puertos locales y los libera automáticamente. La app empaquetada **no usa puertos**.
@@ -223,7 +231,7 @@ Electron main
 
 Los instaladores se generan con `electron-builder`:
 
-- **Linux:** AppImage y `.deb`.
+- **Linux:** AppImage, `.deb` y `.rpm`.
 - **Windows:** instalador NSIS y portable.
 
 `better-sqlite3` se distribuye con binarios N-API para cada plataforma; no se recompila en la máquina del usuario. Las migraciones y el icono se incluyen como recursos externos al asar.
