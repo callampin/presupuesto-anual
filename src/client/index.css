@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    /* Carta de calibración: tinta de mar profundo, hueso y latón. */
+    --background: 187 52% 5%;
+    --foreground: 42 36% 87%;
+
+    --card: 187 44% 8%;
+    --card-foreground: 42 36% 87%;
+
+    --muted: 187 38% 12%;
+    --muted-foreground: 165 12% 62%;
+
+    --border: 184 30% 18%;
+    --input: 184 30% 18%;
+    --ring: 38 58% 61%;
+
+    --primary: 38 58% 61%;
+    --primary-foreground: 187 52% 5%;
+
+    --destructive: 7 62% 60%;
+    --destructive-foreground: 42 36% 97%;
+
+    /* Líneas espectrales: cada bloque tiene una longitud de onda. */
+    --income: 160 45% 60%;
+    --bills: 198 52% 66%;
+    --expenses: 38 68% 63%;
+    --savings: 242 58% 78%;
+    --debt: 12 60% 67%;
+    --warning: 38 68% 63%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: hsl(var(--background));
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Familjen Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'ss01' 1, 'cv01' 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.32);
+    color: hsl(var(--foreground));
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-border;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.4);
+  }
+
+  input[type='date'],
+  input[type='time'] {
+    color-scheme: dark;
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring) / 0.7);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /*
+   * Panel de trazado: borde de 1px y marcas de registro en dos esquinas.
+   * La firma visual del sistema; no usar en contenedores pequeños anidados.
+   */
+  .plot-panel {
+    @apply relative rounded-[2px] border border-border bg-card/90;
+  }
+
+  .plot-panel::before,
+  .plot-panel::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: hsl(var(--primary) / 0.45);
+    border-style: solid;
+    pointer-events: none;
+  }
+
+  .plot-panel::before {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+  }
+
+  .plot-panel::after {
+    right: 0;
+    bottom: 0;
+    border-width: 0 1px 1px 0;
+  }
+
+  .label-caps {
+    @apply font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground;
+  }
+
+  .value-num {
+    font-family: 'DM Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+
+  .hairline {
+    @apply border-border/70;
+  }
+
+
+  .table-scroll {
+    position: relative;
+  }
+
+  @media (max-width: 767px) {
+    .table-scroll::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 20px;
+      background: linear-gradient(to left, hsl(var(--card)) 0%, transparent 100%);
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rail-draw {
+    transform-origin: left center;
+    animation: rail-draw 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .plate-in {
+    animation: plate-in 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}

@@ -1,0 +1,62 @@
+appId: com.saga.presupuesto
+productName: Presupuesto Personal
+copyright: Copyright © 2026 Presupuesto Personal
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - "!**/*.map"
+  - package.json
+
+extraResources:
+  - from: drizzle
+    to: migrations
+  - from: build/icon.png
+    to: icon.png
+
+afterPack: scripts/after-pack.cjs
+
+asar: true
+asarUnpack:
+  - "**/node_modules/better-sqlite3/**"
+
+# better-sqlite3 13 distribuye binarios N-API para todas las plataformas;
+# no hace falta node-gyp ni reconstruir para Electron.
+npmRebuild: false
+
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Office
+  icon: build/icon.png
+  executableName: presupuesto-personal
+  syncDesktopName: true
+  maintainer: Presupuesto Personal
+  synopsis: Finanzas personales locales
+  description: >-
+    Aplicación de escritorio para presupuesto mensual, dashboard anual,
+    catálogo de gastos y calculadora de interés compuesto. Todos los datos se
+    guardan en SQLite en tu equipo.
+
+win:
+  target:
+    - nsis
+    - portable
+  icon: build/icon.ico
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Presupuesto Personal
+  deleteAppDataOnUninstall: false
+
+portable:
+  artifactName: Presupuesto-Personal-${version}-portable.${ext}

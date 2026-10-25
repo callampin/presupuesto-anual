@@ -1,0 +1,1 @@
+ALTER TABLE `catalog_items` ADD `total_amount` real;
